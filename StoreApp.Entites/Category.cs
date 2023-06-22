@@ -1,0 +1,13 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace StoreApp.Entites
+{
+    public class Category
+    {
+        public int CategoryId { get; set; }
+        public String CategoryName { get; set; } = String.Empty;
+    }
+}

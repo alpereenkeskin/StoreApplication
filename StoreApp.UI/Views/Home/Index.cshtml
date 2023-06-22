@@ -1,4 +1,4 @@
-﻿@model List<Product>
+﻿@model IQueryable<Product>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -14,6 +14,7 @@
     </thead>
     <tbody>
         @foreach (var item in Model)
+
         {
             <tr>
                 <th scope="row">1</th>
@@ -21,7 +22,7 @@
                 <td>@item.Price</td>
                 <td>
                     <a asp-action="GetProduct" asp-controller="Home" asp-route-id="@item.ProductId"
-                       class="btn btn-primary">Details</a>
+                        class="btn btn-primary">Details</a>
                 </td>
             </tr>
         }

@@ -1,0 +1,26 @@
+@model List<Category>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2>Basic Table</h2>
+    <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Kategori Adı</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CategoryId</td>
+                    <td>@item.CategoryName</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

@@ -1,30 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using StoreApp.Repositories;
-
+using StoreApp.Repositories.Concrete;
 
 namespace StoreApp.UI.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly RepositoryDbContext _context;
-    public HomeController(RepositoryDbContext context)
+    private readonly IRepositoryManager _repositoryManager;
+    public HomeController(IRepositoryManager repositoryManager)
     {
-        _context = context;
+        _repositoryManager = repositoryManager;
     }
 
 
     public IActionResult Index()
     {
-        return View(_context.Products.ToList());
+
+        return View(_repositoryManager.Product.GetAllProducts(false));
     }
     public IActionResult GetProduct(int id)
     {
-        if (id != 0)
-        {
-            var product = _context.Products.Find(id);
-            return View(product);
-        }
-        return View();
+        var product = _repositoryManager.Product.GetOneProduct(id, true);
+        return View(product);
     }
 }
 

@@ -10,13 +10,50 @@ using StoreApp.Repositories;
 namespace StoreApp.UI.Migrations
 {
     [DbContext(typeof(RepositoryDbContext))]
-    [Migration("20230622144621_init")]
-    partial class init
+    [Migration("20230622203404_Category")]
+    partial class Category
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.0");
+
+            modelBuilder.Entity("StoreApp.Entites.Category", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CategoryName = "Deneme Kategori"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CategoryName = "Deneme Kategori 2"
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            CategoryName = "Deneme Kategori 3"
+                        },
+                        new
+                        {
+                            CategoryId = 4,
+                            CategoryName = "Deneme Kategori 4"
+                        });
+                });
 
             modelBuilder.Entity("StoreApp.Entites.Product", b =>
                 {

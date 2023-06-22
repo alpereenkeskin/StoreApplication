@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 namespace StoreApp.Repositories
 {
@@ -16,6 +17,14 @@ namespace StoreApp.Repositories
             return asNoTracking ?
             _context.Set<T>() :
             _context.Set<T>().AsNoTracking();
+        }
+
+        public T? FindByCondition(Expression<Func<T, bool>> expression, bool asNoTracking)
+        {
+            return asNoTracking ?
+            _context.Set<T>().Where(expression).FirstOrDefault()
+            :
+            _context.Set<T>().Where(expression).AsNoTracking().FirstOrDefault();
         }
     }
 
