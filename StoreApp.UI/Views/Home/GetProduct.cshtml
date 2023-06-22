@@ -1,0 +1,8 @@
+@model Product
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">@Model.ProductName</h5>
+        <p class="card-text">@Model.Price</p>
+        <a asp-action="Index" asp-controller="Home" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
