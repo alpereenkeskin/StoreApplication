@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StoreApp.Repositories;
 using StoreApp.Repositories.Concrete;
+using StoreApp.Services;
+using StoreApp.Services.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,10 @@ builder.Services.AddDbContext<RepositoryDbContext>(options =>
 builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+
+builder.Services.AddScoped<ICategoryService, CategoryManager>();
+builder.Services.AddScoped<IProductService, ProductManager>();
+builder.Services.AddScoped<IServiceManager, ServiceManager>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,9 +32,8 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapAreaControllerRoute(name: "Admin", areaName: "Admin", pattern: "Admin/{controller=Dashboard}/{action=Index}/{id?}");
+app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
 

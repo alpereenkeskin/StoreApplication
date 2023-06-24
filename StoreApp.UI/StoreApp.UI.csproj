@@ -19,6 +19,7 @@
     <ProjectReference Include="..\StoreApp.Repositories\StoreApp.Repositories.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\StoreApp.Services\StoreApp.Services.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Models\" />
