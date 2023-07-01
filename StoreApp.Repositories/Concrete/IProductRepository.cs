@@ -10,5 +10,8 @@ namespace StoreApp.Repositories.Concrete
     {
         IQueryable<Product> GetAllProducts(bool asNoTracking);
         Product? GetOneProduct(int id, bool asNoTracking);
+        void CreateProduct(Product product);
+        void DeleteProduct(Product product);
+        void UpdateOneProduct(Product product);
     }
 }

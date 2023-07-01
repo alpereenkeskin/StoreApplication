@@ -12,6 +12,11 @@ namespace StoreApp.Repositories
             _context = context;
         }
 
+        public void Create(T entity)
+        {
+            _context.Set<T>().Add(entity);
+        }
+
         public IQueryable<T> FindAll(bool asNoTracking)
         {
             return asNoTracking ?
@@ -25,6 +30,14 @@ namespace StoreApp.Repositories
             _context.Set<T>().Where(expression).FirstOrDefault()
             :
             _context.Set<T>().Where(expression).AsNoTracking().FirstOrDefault();
+        }
+        public void Delete(T entity)
+        {
+            _context.Set<T>().Remove(entity);
+        }
+        public void Update(T entity)
+        {
+            _context.Set<T>().Update(entity);
         }
     }
 

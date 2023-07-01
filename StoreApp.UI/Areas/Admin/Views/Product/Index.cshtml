@@ -32,8 +32,8 @@
                     <th scope="row">@item.ProductId</th>
                     <td>@item.ProductName</td>
                     <td>@item.Price</td>
-                    <td scope="col"><a class="btn btn-primary">Güncelle</a></td>
-                    <td scope="col"><a class="btn btn-danger">Sil</a></td>
+                    <td scope="col"><a asp-action="Update" asp-controller="Product" asp-route-id="@item.ProductId" asp-area="Admin" class="btn btn-primary">Güncelle</a></td>
+                    <td scope="col"><a asp-action="Delete" asp-controller="Product" asp-route-id="@item.ProductId" asp-area="Admin" class="btn btn-danger">Sil</a></td>
                 </tr>
             }
 

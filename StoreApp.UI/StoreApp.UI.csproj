@@ -23,8 +23,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Models\" />
+    <None Remove="Infrastructe\" />
+    <None Remove="Infrastructe\Mapper\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Infrastructe\" />
+    <Folder Include="Infrastructe\Mapper\" />
   </ItemGroup>
 </Project>

@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using StoreApp.Entites;
+using StoreApp.Entites.Dtos;
+
 
 
 namespace StoreApp.Services.Concrete
@@ -11,6 +9,9 @@ namespace StoreApp.Services.Concrete
     {
         IEnumerable<Product> GetAllProducts(bool asnoTracking);
         Product? GetOneProduct(int id, bool asnoTracking);
-
+        void CreateProduct(ProductCreateDto productDto);
+        void UpdateProduct(ProductUpdateDto productdto);
+        void DeleteProduct(int id);
+        ProductUpdateDto GetOneProductForUpdate(int id, bool asnoTracking);
     }
 }

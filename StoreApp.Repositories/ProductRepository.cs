@@ -14,6 +14,15 @@ namespace StoreApp.Repositories
         {
         }
 
+        public void CreateProduct(Product product)
+        {
+             Create(product);
+        }
+
+        public void DeleteProduct(Product product) => Delete(product);
+       
+        
+
         public IQueryable<Product> GetAllProducts(bool asNoTracking)
         {
             return asNoTracking ?
@@ -27,6 +36,6 @@ namespace StoreApp.Repositories
             return FindByCondition(x => x.ProductId == id, asNoTracking);
         }
 
-
+        public void UpdateOneProduct(Product product) => Update(product);
     }
 }
