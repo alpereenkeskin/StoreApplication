@@ -10,8 +10,8 @@ using StoreApp.Repositories;
 namespace StoreApp.UI.Migrations
 {
     [DbContext(typeof(RepositoryDbContext))]
-    [Migration("20230629133949_init")]
-    partial class init
+    [Migration("20230702121300_start")]
+    partial class start
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -64,11 +64,17 @@ namespace StoreApp.UI.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("TEXT");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ProductName")
                         .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Summary")
                         .HasColumnType("TEXT");
 
                     b.HasKey("ProductId");
@@ -82,6 +88,7 @@ namespace StoreApp.UI.Migrations
                         {
                             ProductId = 4,
                             CategoryId = 1,
+                            ImagePath = "/images/1.jpg",
                             Price = 0m,
                             ProductName = "deneme2"
                         },
@@ -89,6 +96,7 @@ namespace StoreApp.UI.Migrations
                         {
                             ProductId = 5,
                             CategoryId = 2,
+                            ImagePath = "/images/2.jpg",
                             Price = 0m,
                             ProductName = "deneme3"
                         },
@@ -96,6 +104,7 @@ namespace StoreApp.UI.Migrations
                         {
                             ProductId = 6,
                             CategoryId = 3,
+                            ImagePath = "/images/3.jpg",
                             Price = 0m,
                             ProductName = "deneme4"
                         },
@@ -103,6 +112,7 @@ namespace StoreApp.UI.Migrations
                         {
                             ProductId = 7,
                             CategoryId = 1,
+                            ImagePath = "/images/4.jpg",
                             Price = 0m,
                             ProductName = "deneme5"
                         },
@@ -110,6 +120,7 @@ namespace StoreApp.UI.Migrations
                         {
                             ProductId = 8,
                             CategoryId = 2,
+                            ImagePath = "/images/5.jpg",
                             Price = 0m,
                             ProductName = "deneme6"
                         });

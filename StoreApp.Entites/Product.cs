@@ -9,6 +9,8 @@ namespace StoreApp.Entites
         public String? ProductName { get; set; }
         [Required(ErrorMessage = "Price is required")]
         public decimal Price { get; set; }
+        public String? Summary { get; set; }
+        public String? ImagePath { get; set; }
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
     }

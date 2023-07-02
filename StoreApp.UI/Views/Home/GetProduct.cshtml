@@ -1,8 +1,29 @@
 @model Product
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title">@Model.ProductName</h5>
-        <p class="card-text">@Model.Price</p>
-        <a asp-action="Index" asp-controller="Home" class="btn btn-primary">Go somewhere</a>
+<div class="container text-center">
+    <div class="row mb-5">
+        <div class="col-12">
+            <h1 class="display-4 ">
+                @Model.ProductName
+            </h1>
+        </div>
+
     </div>
+
+    <div class="row">
+        <div class="col-12">
+            <img class="img-fluid img-rounded border" style="width: 50%;" src="@Model.ImagePath">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p class="lead">@Model.Summary</p>
+            <p>@Model.Price&nbsp;<bold>₺</bold>
+            </p>
+
+
+        </div>
+    </div>
+
 </div>
+
+

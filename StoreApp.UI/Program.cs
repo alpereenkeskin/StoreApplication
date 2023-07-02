@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 builder.Services.AddDbContext<RepositoryDbContext>(options =>
 {
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("StoreApp.UI"));
@@ -33,8 +34,16 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapAreaControllerRoute(name: "Admin", areaName: "Admin", pattern: "Admin/{controller=Dashboard}/{action=Index}/{id?}");
-app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseEndpoints(enpoints =>
+{
+    enpoints.MapAreaControllerRoute(
+        name: "Admin", areaName: "Admin", pattern: "Admin/{controller=Dashboard}/{action=Index}/{id?}"
+    );
+    enpoints.MapControllerRoute(
+        name: "default", pattern: "{controller=Home}/{action=Index}/{id?}"
+        );
+    enpoints.MapRazorPages();
+});
 
 app.Run();
 

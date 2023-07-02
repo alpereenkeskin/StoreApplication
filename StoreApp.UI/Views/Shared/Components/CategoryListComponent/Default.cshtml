@@ -1,10 +1,12 @@
 @model List<Category>
 <table class="table">
+    <h4 class="text-muted"> Kategoriler</h4>
+
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.CategoryName</td>
+                <td><a class="btn btn-outline-dark w-100" href="#">@item.CategoryName</a></td>
             </tr>
         }
 
