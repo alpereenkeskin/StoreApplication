@@ -12,20 +12,20 @@ namespace StoreApp.UI.Pages
 
         public CardRazor(IServiceManager serviceManager, Cart cart)
         {
-            _serviceManager = serviceManager;
             Cart = cart;
+            _serviceManager = serviceManager;
+
         }
-
-
         public string ReturnUrl { get; set; } = "/";
 
-        public void OnGet(string returnUrl)
+        // Onget() sayfa yüklendiğinde çalışacak olan metotdur.Ve çalışacak olan işlemleri belirtir.Ornek veritabanından kullanıcı çekmek için kullanılabilir.
+        public void OnGet(string returnUrl)// kullanıcı hangi sayfadan buraya eriştiyse o bilgiyi tutmak için değişken tanımlıyoruz. örnek olarak sepete baktığında aynı sayfaya geri dönebilsin.
         {
-            ReturnUrl = returnUrl ?? "/";
+            ReturnUrl = returnUrl ?? "/"; // eğer return url boş ise tekrar ana sayfadau göndersin 
 
 
         }
-        public IActionResult OnPost(int productId, string returnUrl)
+        public IActionResult OnPost(int productId, string returnUrl)// Sayfadan sepete eklenen ürünleri seçmek için productId ile onları alıyoruz.
         {
             Product? product = _serviceManager
             .ProductService

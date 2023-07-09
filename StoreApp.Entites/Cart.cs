@@ -8,9 +8,10 @@ namespace StoreApp.Entites
     public class Cart
     {
         public List<CartLine> CartLines { get; set; }
-        public Cart(List<CartLine> cartLines)
+
+        public Cart()
         {
-            CartLines = cartLines;
+            CartLines = new List<CartLine>();
         }
         public void AddItem(Product product, int quantity)
         {

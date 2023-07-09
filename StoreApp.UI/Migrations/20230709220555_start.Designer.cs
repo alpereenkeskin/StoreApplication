@@ -10,7 +10,7 @@ using StoreApp.Repositories;
 namespace StoreApp.UI.Migrations
 {
     [DbContext(typeof(RepositoryDbContext))]
-    [Migration("20230702121300_start")]
+    [Migration("20230709220555_start")]
     partial class start
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
