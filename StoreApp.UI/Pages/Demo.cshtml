@@ -1,0 +1,18 @@
+﻿@page
+@model DemoModel
+@{
+    Layout = "_Layout";
+}
+<div class="my-5 text-center w-50">
+    <div class="display-6">Hello @Model.FullName</div>
+    <p class="text-danger">@HttpContext.Session.GetString("name")</p>
+    <div class="form-group">
+        <form asp-page-handler="Demo" method="post">
+            <input type="text" class="form-control mb-2" name="name">
+            <input type="submit" class="form-control btn btn-danger">
+        </form>
+    </div>
+</div>
+
+
+

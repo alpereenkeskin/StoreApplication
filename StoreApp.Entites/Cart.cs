@@ -13,7 +13,7 @@ namespace StoreApp.Entites
         {
             CartLines = new List<CartLine>();
         }
-        public void AddItem(Product product, int quantity)
+        public virtual void AddItem(Product product, int quantity)
         {
             CartLine? line = CartLines.Where(x => x.Product.ProductId == product.ProductId).FirstOrDefault();
             if (line is null)
@@ -28,11 +28,11 @@ namespace StoreApp.Entites
                 line.Quantity += quantity;
         }
 
-        public void RemoveAll(Product product) => CartLines.RemoveAll(x => x.Product.ProductId == product.ProductId);
+        public virtual void RemoveAll(Product product) => CartLines.RemoveAll(x => x.Product.ProductId == product.ProductId);
 
-        public decimal ComputeTotalValue() => CartLines.Sum(x => x.Product.Price * x.Quantity);
+        public virtual decimal ComputeTotalValue() => CartLines.Sum(x => x.Product.Price * x.Quantity);
 
-        public void Clear() => CartLines.Clear();
+        public virtual void Clear() => CartLines.Clear();
 
     }
 }

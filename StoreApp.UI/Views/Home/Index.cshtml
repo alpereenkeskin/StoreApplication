@@ -17,6 +17,8 @@
     <tbody>
         @foreach (var item in Model)
 
+
+
         {
             <tr>
                 <td style="text-aling:center;font-family:Arial, Helvetica, sans-serif; font-weight: bold;">@item.ProductName
@@ -30,7 +32,7 @@
 
                         <form id="@item.ProductId" asp-page="/CardRazor" method="post">
                             <input type="hidden" name="ProductId" value="@item.ProductId" />
-                            <input type="hidden" name="returnUrl" value="/Product/Get/@item.ProductId">
+                            <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()">
                             <button type="submit" class="btn btn-outline-primary">
                                 Add Cart
                             </button>

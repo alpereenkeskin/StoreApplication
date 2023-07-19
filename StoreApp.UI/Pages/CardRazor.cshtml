@@ -22,7 +22,9 @@
             </tr>
         </thead>
         <tbody>
-            @*Cart? kullanmamamızın amacı eger sayfaya gelen cart boş ise boş bir cartline oluşturuluyor hata verilmesi engelleniyor. * ****Model.Cart?.CartLines ?? Enumerable.Empty()) burada Cartline eğer NULL ise boş bir Cartline listesi döndürülür.
+            @*Cart? kullanmamamızın amacı eger sayfaya gelen cart boş ise boş bir cartline oluşturuluyor hata verilmesi
+            engelleniyor. * ****Model.Cart?.CartLines ?? Enumerable.Empty()) burada Cartline eğer NULL ise boş bir
+            Cartline listesi döndürülür.
             *@
 
             @foreach (var item in Model.Cart?.CartLines ?? Enumerable.Empty<CartLine>())
@@ -35,7 +37,7 @@
                     <td>
                         <form method="post" asp-page-handler="Remove">
                             <input type="hidden" name="productId" value="@item.Product.ProductId">
-                            <input type="hidden" name="returnUrl" value="@Model.ReturnUrl">
+                            <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()">
                             <button class="btn btn-sm btn-danger">
                                 Remove
                             </button>
@@ -55,5 +57,7 @@
                 </td>
             </tr>
         </tfoot>
+
     </table>
+    <a class="btn btn-danger" href="@Model.ReturnUrl">Continue Shopping</a>
 </div>
