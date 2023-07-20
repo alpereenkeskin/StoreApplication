@@ -9,6 +9,7 @@ namespace StoreApp.Repositories.Concrete
     {
         IProductRepository Product { get; }
         ICategoryRepository Category { get; }
+        IOrderRepository OrderRepository { get; }
         void Save();
 
     }

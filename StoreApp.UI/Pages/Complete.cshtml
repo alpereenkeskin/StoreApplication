@@ -1,0 +1,19 @@
+﻿@page
+@model StoreApp.UI.Pages.CompleteModel
+@{
+
+}
+<div class="text-center">
+    <h6 class="display-6">
+        Thanks
+    </h6>
+    <p>Thanks for placing order #@orderId</p>
+    <p>We'll ship your goods as soon possible.</p>
+    <a asp-action="Index" asp-controller="Home" class="btn btn-success">Return to Store</a>
+</div>
+
+
+@functions {
+    [BindProperty(SupportsGet = true)]
+    public String? orderId { get; set; }
+}
