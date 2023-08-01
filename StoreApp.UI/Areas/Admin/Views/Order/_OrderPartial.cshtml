@@ -1,0 +1,49 @@
+@model Order
+@{
+    var total = Model.CartLines.Sum(x => x.Product.Price * x.Quantity);
+}
+<div class="row shadow my-3">
+    <div class="col-md-3 border-1 border-dark p-3 bg-light shadow">
+        <h5 class="text-center display-5">
+            @Model.Name
+        </h5>
+        <p>@Model.Line1</p>
+        <p>@Model.Line2</p>
+        <p>@Model.Line3</p>
+        <p>@Model.City</p>
+        <p class="rounded-2 p-3">
+            <span class="bg-warning p-2">Shipped</span>
+            <span class="@(Model.Shipped == false ? "bg-danger p-2" : "bg-primary p-2")">
+                @(Model.Shipped == true ? "Completed" : "In Progress")
+            </span>
+        </p>
+    </div>
+    <div class=" col-md-9">
+        <div class="display-6 mt-3 text-center">
+            Cart
+        </div>
+        <ul class="list-group">
+
+            @foreach (var item in Model.CartLines)
+            {
+                <li class="list-group-item d-flex justify-content-between brand mb-3">
+                    <b>@item.Product.ProductName</b>
+                    <b>@item.Quantity piece * @item.Product.Price.ToString("C2")
+                        = @((item.Quantity * item.Product.Price).ToString("C2"))
+                    </b>
+
+                </li>
+            }
+            <li class="list-group-item d-flex justify-content-between brand mb-3">
+                Total
+                <b class="text-danger">
+                    <b>@total.ToString("C2")</b>
+                </b>
+            </li>
+        </ul>
+        <form method="post" asp-action="Complete" asp-controller="Order" asp-area="Admin" class="mb-2">
+            <input type="hidden" name="id" value="@Model.OrderId">
+            <input type="submit" class="btn btn-success" value="Complete" disabled="@Model.Shipped">
+        </form>
+    </div>
+</div>

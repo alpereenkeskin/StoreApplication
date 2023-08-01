@@ -13,6 +13,7 @@ namespace StoreApp.Entites
         public String? ImagePath { get; set; }
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
+        public bool Showcase { get; set; }
     }
 
 }

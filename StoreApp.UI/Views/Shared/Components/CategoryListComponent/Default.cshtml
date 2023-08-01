@@ -6,7 +6,8 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td><a class="btn btn-outline-dark w-100" href="#">@item.CategoryName</a></td>
+                <td><a asp-action="Index" asp-controller="Product" asp-route-categoryId="@item.CategoryId"
+                        class="btn btn-outline-dark w-100">@item.CategoryName</a></td>
             </tr>
         }
 

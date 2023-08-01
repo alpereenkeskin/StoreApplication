@@ -134,6 +134,9 @@ namespace StoreApp.UI.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("Showcase")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Summary")
                         .HasColumnType("TEXT");
 
@@ -150,7 +153,8 @@ namespace StoreApp.UI.Migrations
                             CategoryId = 1,
                             ImagePath = "/images/1.jpg",
                             Price = 0m,
-                            ProductName = "deneme2"
+                            ProductName = "deneme2",
+                            Showcase = false
                         },
                         new
                         {
@@ -158,7 +162,8 @@ namespace StoreApp.UI.Migrations
                             CategoryId = 2,
                             ImagePath = "/images/2.jpg",
                             Price = 0m,
-                            ProductName = "deneme3"
+                            ProductName = "deneme3",
+                            Showcase = false
                         },
                         new
                         {
@@ -166,7 +171,8 @@ namespace StoreApp.UI.Migrations
                             CategoryId = 3,
                             ImagePath = "/images/3.jpg",
                             Price = 0m,
-                            ProductName = "deneme4"
+                            ProductName = "deneme4",
+                            Showcase = false
                         },
                         new
                         {
@@ -174,7 +180,8 @@ namespace StoreApp.UI.Migrations
                             CategoryId = 1,
                             ImagePath = "/images/4.jpg",
                             Price = 0m,
-                            ProductName = "deneme5"
+                            ProductName = "deneme5",
+                            Showcase = false
                         },
                         new
                         {
@@ -182,7 +189,35 @@ namespace StoreApp.UI.Migrations
                             CategoryId = 2,
                             ImagePath = "/images/5.jpg",
                             Price = 0m,
-                            ProductName = "deneme6"
+                            ProductName = "deneme6",
+                            Showcase = false
+                        },
+                        new
+                        {
+                            ProductId = 9,
+                            CategoryId = 3,
+                            ImagePath = "/images/3.jpg",
+                            Price = 0m,
+                            ProductName = "DENEMEYENI1",
+                            Showcase = true
+                        },
+                        new
+                        {
+                            ProductId = 10,
+                            CategoryId = 1,
+                            ImagePath = "/images/4.jpg",
+                            Price = 0m,
+                            ProductName = "DENEMEYENI2",
+                            Showcase = true
+                        },
+                        new
+                        {
+                            ProductId = 11,
+                            CategoryId = 2,
+                            ImagePath = "/images/5.jpg",
+                            Price = 0m,
+                            ProductName = "DENEMEYENI3",
+                            Showcase = true
                         });
                 });
 

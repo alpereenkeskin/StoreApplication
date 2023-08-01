@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using StoreApp.Entites;
+using StoreApp.Entites.RequestParameters;
 using StoreApp.Repositories.Concrete;
 
 namespace StoreApp.Repositories
@@ -16,12 +17,10 @@ namespace StoreApp.Repositories
 
         public void CreateProduct(Product product)
         {
-             Create(product);
+            Create(product);
         }
 
         public void DeleteProduct(Product product) => Delete(product);
-       
-        
 
         public IQueryable<Product> GetAllProducts(bool asNoTracking)
         {
@@ -36,6 +35,26 @@ namespace StoreApp.Repositories
             return FindByCondition(x => x.ProductId == id, asNoTracking);
         }
 
+        public IQueryable<Product> GetShowcaseProducts(bool trackChanges)
+        {
+            return FindAll(trackChanges)
+            .Where(x => x.Showcase.Equals(true));
+            // throw new NotImplementedException();
+        }
+
         public void UpdateOneProduct(Product product) => Update(product);
+
+        public IQueryable<Product> GetAllProductsWithDetails(ProductRequestParameters p)
+        {
+            return p is null
+            ? _context
+            .Products
+            .Include(x => x.Category)
+            :
+            _context
+            .Products
+            .Include(x => x.Category)
+            .Where(x => x.CategoryId == p.CategoryId);
+        }
     }
 }

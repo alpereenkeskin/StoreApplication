@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using StoreApp.Entites;
+using StoreApp.Entites.RequestParameters;
 using StoreApp.Repositories.Concrete;
 using StoreApp.Services.Concrete;
 
@@ -46,6 +47,10 @@ namespace StoreApp.Services
                 throw new Exception("Hata Silinemedi");
             }
         }
+        public IQueryable<Product> GetAllProductsWithDetails(ProductRequestParameters p)
+        {
+            return _repoManager.Product.GetAllProductsWithDetails(p);
+        }
 
         public IEnumerable<Product> GetAllProducts(bool asnoTracking)
         {
@@ -69,11 +74,16 @@ namespace StoreApp.Services
             return productDto;
         }
 
+        public IEnumerable<Product> GetShowcaseProducts(bool asnoTracking)
+        {
+            return _repoManager.Product.GetShowcaseProducts(asnoTracking);
+        }
+
         public void UpdateProduct(ProductUpdateDto productdto)
         {
-                var product = _mapper.Map<Product>(productdto);
-                _repoManager.Product.UpdateOneProduct(product);
-                _repoManager.Save();
+            var product = _mapper.Map<Product>(productdto);
+            _repoManager.Product.UpdateOneProduct(product);
+            _repoManager.Save();
         }
     }
 }

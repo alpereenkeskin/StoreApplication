@@ -7,7 +7,7 @@ namespace StoreApp.Repositories
     {
         public DbSet<Product>? Products { get; set; }
         public DbSet<Category>? Categories { get; set; }
-        public DbSet<Order> Orders { get; set; }
+        public DbSet<Order>? Orders { get; set; }
         public RepositoryDbContext(DbContextOptions<RepositoryDbContext> options) : base(options)
         {
 

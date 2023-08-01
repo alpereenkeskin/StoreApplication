@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace StoreApp.UI.Migrations
 {
-    public partial class Init : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -52,7 +52,8 @@ namespace StoreApp.UI.Migrations
                     Price = table.Column<decimal>(type: "TEXT", nullable: false),
                     Summary = table.Column<string>(type: "TEXT", nullable: true),
                     ImagePath = table.Column<string>(type: "TEXT", nullable: true),
-                    CategoryId = table.Column<int>(type: "INTEGER", nullable: false)
+                    CategoryId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Showcase = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -113,28 +114,43 @@ namespace StoreApp.UI.Migrations
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "ProductId", "CategoryId", "ImagePath", "Price", "ProductName", "Summary" },
-                values: new object[] { 4, 1, "/images/1.jpg", 0m, "deneme2", null });
+                columns: new[] { "ProductId", "CategoryId", "ImagePath", "Price", "ProductName", "Showcase", "Summary" },
+                values: new object[] { 4, 1, "/images/1.jpg", 0m, "deneme2", false, null });
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "ProductId", "CategoryId", "ImagePath", "Price", "ProductName", "Summary" },
-                values: new object[] { 5, 2, "/images/2.jpg", 0m, "deneme3", null });
+                columns: new[] { "ProductId", "CategoryId", "ImagePath", "Price", "ProductName", "Showcase", "Summary" },
+                values: new object[] { 5, 2, "/images/2.jpg", 0m, "deneme3", false, null });
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "ProductId", "CategoryId", "ImagePath", "Price", "ProductName", "Summary" },
-                values: new object[] { 6, 3, "/images/3.jpg", 0m, "deneme4", null });
+                columns: new[] { "ProductId", "CategoryId", "ImagePath", "Price", "ProductName", "Showcase", "Summary" },
+                values: new object[] { 6, 3, "/images/3.jpg", 0m, "deneme4", false, null });
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "ProductId", "CategoryId", "ImagePath", "Price", "ProductName", "Summary" },
-                values: new object[] { 7, 1, "/images/4.jpg", 0m, "deneme5", null });
+                columns: new[] { "ProductId", "CategoryId", "ImagePath", "Price", "ProductName", "Showcase", "Summary" },
+                values: new object[] { 7, 1, "/images/4.jpg", 0m, "deneme5", false, null });
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "ProductId", "CategoryId", "ImagePath", "Price", "ProductName", "Summary" },
-                values: new object[] { 8, 2, "/images/5.jpg", 0m, "deneme6", null });
+                columns: new[] { "ProductId", "CategoryId", "ImagePath", "Price", "ProductName", "Showcase", "Summary" },
+                values: new object[] { 8, 2, "/images/5.jpg", 0m, "deneme6", false, null });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "ProductId", "CategoryId", "ImagePath", "Price", "ProductName", "Showcase", "Summary" },
+                values: new object[] { 9, 3, "/images/3.jpg", 0m, "DENEMEYENI1", true, null });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "ProductId", "CategoryId", "ImagePath", "Price", "ProductName", "Showcase", "Summary" },
+                values: new object[] { 10, 1, "/images/4.jpg", 0m, "DENEMEYENI2", true, null });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "ProductId", "CategoryId", "ImagePath", "Price", "ProductName", "Showcase", "Summary" },
+                values: new object[] { 11, 2, "/images/5.jpg", 0m, "DENEMEYENI3", true, null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CartLine_OrderId",
