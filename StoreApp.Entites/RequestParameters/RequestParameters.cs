@@ -7,6 +7,9 @@ namespace StoreApp.Entites.RequestParameters
 {
     public class RequestParameters
     {
+        public String? SearchTerm { get; set; }
+        public int minPrice { get; set; } = 0;
+        public int maxPrice { get; set; } = int.MaxValue;
 
     }
 }

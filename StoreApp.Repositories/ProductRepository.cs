@@ -1,15 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using StoreApp.Entites;
 using StoreApp.Entites.RequestParameters;
 using StoreApp.Repositories.Concrete;
+using StoreApp.Repositories.RepositoriesExtensions;
 
 namespace StoreApp.Repositories
 {
-    public class ProductRepository : RepositoryBase<Product>, IProductRepository
+    public sealed class ProductRepository : RepositoryBase<Product>, IProductRepository
     {
         public ProductRepository(RepositoryDbContext context) : base(context)
         {
@@ -46,15 +43,11 @@ namespace StoreApp.Repositories
 
         public IQueryable<Product> GetAllProductsWithDetails(ProductRequestParameters p)
         {
-            return p is null
-            ? _context
+            return _context
             .Products
-            .Include(x => x.Category)
-            :
-            _context
-            .Products
-            .Include(x => x.Category)
-            .Where(x => x.CategoryId == p.CategoryId);
+            .FilteredByCategoryId(p.CategoryId)
+            .FilteredBySearchTerm(p.SearchTerm)
+            .FilteredByPrice(p.maxPrice, p.minPrice);
         }
     }
 }

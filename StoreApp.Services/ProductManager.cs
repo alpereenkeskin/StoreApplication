@@ -57,6 +57,14 @@ namespace StoreApp.Services
             return _repoManager.Product.FindAll(asnoTracking);
         }
 
+        public IEnumerable<Product> GetLatesProducts(int n, bool asnoTracking)
+        {
+            return _repoManager
+            .Product
+            .FindAll(asnoTracking)
+            .OrderByDescending(x => x.ProductId)
+            .Take(n);
+        }
         public Product? GetOneProduct(int id, bool asnoTracking)
         {
             var t = _repoManager.Product.FindByCondition(x => x.ProductId == id, asnoTracking);

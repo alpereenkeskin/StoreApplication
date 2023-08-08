@@ -8,6 +8,7 @@ namespace StoreApp.Services.Concrete
     {
         IEnumerable<Product> GetAllProducts(bool asnoTracking);
         IEnumerable<Product> GetShowcaseProducts(bool asnoTracking);
+        IEnumerable<Product> GetLatesProducts(int n, bool asnoTracking);
         IQueryable<Product> GetAllProductsWithDetails(ProductRequestParameters p);
         Product? GetOneProduct(int id, bool asnoTracking);
         void CreateProduct(ProductCreateDto productDto);
