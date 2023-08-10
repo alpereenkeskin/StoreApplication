@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using StoreApp.Entites;
 using StoreApp.Repositories;
 using StoreApp.Repositories.Concrete;
@@ -20,7 +22,9 @@ namespace StoreApp.UI.Infrastructe.Extensions
                 {
                     options.UseSqlite(configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly("StoreApp.UI"));
+                    options.EnableSensitiveDataLogging(true);
                 });
+            
         }
         public static void ConfigureSession(this IServiceCollection services)
         {
@@ -32,6 +36,21 @@ namespace StoreApp.UI.Infrastructe.Extensions
             });
             services.AddHttpContextAccessor();
             services.AddScoped<Cart>(c => SessionCart.GetCart(c));
+        }
+        public static void ConfigureIdentityDbContext(this IServiceCollection services)
+        {
+
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = false;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.User.RequireUniqueEmail = true;
+
+            })
+                .AddEntityFrameworkStores<RepositoryDbContext>();
+            
         }
         public static void ConfigureRepositoryRegistration(this IServiceCollection services)
         {

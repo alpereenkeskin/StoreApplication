@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.ConfigureDbContext(builder.Configuration); // Extension method
+builder.Services.ConfigureIdentityDbContext();
 builder.Services.ConfigureSession(); // Extension method
 builder.Services.ConfigureRepositoryRegistration();// Extension method
 builder.Services.ConfigureServiceRegistration();// Extension method
@@ -18,6 +19,7 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 app.UseSession();
 app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseEndpoints(enpoints =>
 {
@@ -31,5 +33,6 @@ app.UseEndpoints(enpoints =>
 });
 app.ConfigureAndCheckMigrations();
 app.ConfigureLocation();
+app.ConfigureDefaultAdmin();
 app.Run();
 

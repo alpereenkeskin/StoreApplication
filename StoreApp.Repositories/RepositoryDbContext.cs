@@ -1,9 +1,12 @@
 ﻿using StoreApp.Entites;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using StoreApp.Repositories.Config;
 
 namespace StoreApp.Repositories
 {
-    public class RepositoryDbContext : DbContext
+    public class RepositoryDbContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<Product>? Products { get; set; }
         public DbSet<Category>? Categories { get; set; }
@@ -16,6 +19,9 @@ namespace StoreApp.Repositories
         {
             modelBuilder.ApplyConfiguration(new ProductConfig());
             modelBuilder.ApplyConfiguration(new CategoryConfig());
+            modelBuilder.ApplyConfiguration(new IdentityRoleConfig());
+            base.OnModelCreating(modelBuilder);
+
         }
     }
 
