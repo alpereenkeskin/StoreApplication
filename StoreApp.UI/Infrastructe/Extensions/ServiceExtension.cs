@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,7 +25,7 @@ namespace StoreApp.UI.Infrastructe.Extensions
                     b => b.MigrationsAssembly("StoreApp.UI"));
                     options.EnableSensitiveDataLogging(true);
                 });
-            
+
         }
         public static void ConfigureSession(this IServiceCollection services)
         {
@@ -50,7 +51,7 @@ namespace StoreApp.UI.Infrastructe.Extensions
 
             })
                 .AddEntityFrameworkStores<RepositoryDbContext>();
-            
+
         }
         public static void ConfigureRepositoryRegistration(this IServiceCollection services)
         {
@@ -65,6 +66,7 @@ namespace StoreApp.UI.Infrastructe.Extensions
             services.AddScoped<IProductService, ProductManager>();
             services.AddScoped<IServiceManager, ServiceManager>();
             services.AddScoped<IOrderService, OrderManager>();
+            services.AddScoped<IAuthService, AuthService>();
 
         }
         public static void ConfigureRouting(this IServiceCollection services)
@@ -73,6 +75,18 @@ namespace StoreApp.UI.Infrastructe.Extensions
             {
                 options.AppendTrailingSlash = true;//sonuna '/' ekler.
                 options.LowercaseUrls = true;// url lerin hepsini küçük harf yapar.
+            });
+
+
+        }
+        public static void CookieConfigure(this IServiceCollection services)
+        {
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+                options.LoginPath = "/Account/Login";
+                options.LoginPath = "/Account/Login";
+                options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
             });
 
         }

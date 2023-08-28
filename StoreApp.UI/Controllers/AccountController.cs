@@ -33,6 +33,8 @@ namespace StoreApp.UI.Controllers
             if (ModelState.IsValid)
             {
                 IdentityUser user = await _userManager.FindByNameAsync(loginModel.UserName);
+                var userRole = await _userManager.GetRolesAsync(user);
+                ViewBag.roles = userRole;
                 if (user is not null)
                 {
                     await _signInManager.SignOutAsync();
@@ -75,7 +77,7 @@ namespace StoreApp.UI.Controllers
                 if (result.Succeeded)
                 {
                     var roleResult = await _userManager
-                    .AddToRoleAsync(user, "User");
+                    .AddToRoleAsync(user, "Admin");
                     if (roleResult.Succeeded)
                     {
                         return RedirectToAction("Login", new { ReturnUrl = "/" });
@@ -97,6 +99,11 @@ namespace StoreApp.UI.Controllers
                 }
             }
             return View();
+        }
+        public IActionResult AccessDenied([FromQuery(Name = "returnUrl")] string returnUrl)
+        {
+            return View();
+
         }
     }
 }

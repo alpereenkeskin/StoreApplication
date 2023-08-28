@@ -45,22 +45,22 @@ namespace StoreApp.UI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ffca1d87-2d5c-4339-a594-8f45110e5636",
-                            ConcurrencyStamp = "8a60974e-c9a1-4d4e-8852-a03c041c0fba",
+                            Id = "5ee2ceb7-736c-4c5e-acf5-df397f42c155",
+                            ConcurrencyStamp = "a44365a3-181b-4cbb-93b9-f62bdd19b62f",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "512de735-61ad-450b-9f44-7c3e9484a15e",
-                            ConcurrencyStamp = "d1043f59-9f29-40f5-96dd-3e31a8861065",
+                            Id = "111cce27-067e-4331-8a29-b7f690084bc8",
+                            ConcurrencyStamp = "bf64e36c-1e34-4c6f-9d5a-f2b28594e021",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
-                            Id = "6db078e8-66bd-4f8c-8393-2eba97699db2",
-                            ConcurrencyStamp = "9f5e73ce-922d-492a-a86d-045f62068fa6",
+                            Id = "f66261ec-ee77-4013-978b-c1855c86bcc4",
+                            ConcurrencyStamp = "6c47228c-6fbb-4d2f-a305-8624887c6a2b",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

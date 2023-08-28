@@ -1,0 +1,36 @@
+@model IEnumerable<IdentityUser>
+@{
+    Layout = "_AdminLayout";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Username</th>
+            <th scope="col">Roles</th>
+            <th scope="col">Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <th scope="row">@user.Id</th>
+                <td>@user.UserName</td>
+                <td user-name="@user.UserName" user-role=""></td>
+                <td>
+                    <div class="btn-group">
+                        <form asp-action="DeleteUser" method="post">
+                            <input type="hidden" name="UserName" value="@user.UserName" />
+                            <button type="submit" class="btn btn-danger">Delete User</button>
+                        </form>
+                        <a asp-action="ResetPassword" asp-controller="Role" asp-area="Admin"
+                            asp-route-username="@user.UserName" class="btn btn-info">Reset Password</a>
+                        <a asp-action="Update" asp-controller="Role" asp-area="Admin" asp-route-username="@user.UserName"
+                            class="btn btn-primary">Update User</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,54 @@
+@model UserUpdateDto
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_AdminLayout";
+}
+<div class="text-center">
+    <h1 class="display-6">Update User @Model.UserName</h1>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Update" asp-controller="Role" method="post">
+
+            <div class="text-center">
+                <div class="text-danger" asp-validation-summary="All"></div>
+            </div>
+            <div class="form-group my-3">
+                <label asp-for="UserName"></label>
+                <input type="text" asp-for="UserName" class="form-control">
+            </div>
+            <div class="form-group my-3">
+                <label asp-for="Email"></label>
+                <input type="text" asp-for="Email" class="form-control">
+            </div>
+
+            <div class="form-group my-3">
+                <label asp-for="PhoneNumber"></label>
+                <input type="text" asp-for="PhoneNumber" class="form-control" />
+            </div>
+            <div class="form-group my-3">
+                <div class="btn-group d-flex justifiy-content-end">
+                    <input type="submit" class="btn btn-outline-primary" value="Edit">
+                    <a class="btn btn-outline-primary" asp-action="" asp-controller="" asp-area="">
+                        Back
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                @foreach (var role in Model.Roles)
+                {
+                    <div class="form-check">
+                        <input class="form-check-input" name="Roles" type="checkbox"
+                            checked=@(Model.UserRoles.Contains(@role)) value="@role">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            @role
+                        </label>
+                    </div>
+                }
+            </div>
+        </form>
+
+    </div>
+
+</div>

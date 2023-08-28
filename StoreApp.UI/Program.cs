@@ -1,6 +1,7 @@
 ﻿using StoreApp.UI.Infrastructe.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.ConfigureDbContext(builder.Configuration); // Extension method
@@ -8,6 +9,7 @@ builder.Services.ConfigureIdentityDbContext();
 builder.Services.ConfigureSession(); // Extension method
 builder.Services.ConfigureRepositoryRegistration();// Extension method
 builder.Services.ConfigureServiceRegistration();// Extension method
+builder.Services.CookieConfigure();
 builder.Services.ConfigureRouting();
 builder.Services.AddAutoMapper(typeof(Program));
 
@@ -30,6 +32,7 @@ app.UseEndpoints(enpoints =>
         name: "default", pattern: "{controller=Home}/{action=Index}/{id?}"
         );
     enpoints.MapRazorPages();
+    enpoints.MapControllers();
 });
 app.ConfigureAndCheckMigrations();
 app.ConfigureLocation();
